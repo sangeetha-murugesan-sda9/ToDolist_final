@@ -14,7 +14,7 @@ and then restart the application with the former state restored.
 
 ## Getting Started
 
-The application can run directly via run command.
+The application can run directly via Gradle or generated jar file.
 
 ### Run the ToDoList application
 
@@ -30,7 +30,7 @@ The user has to select one option from the Menu and go with the instructions.
 
 ## List of java class files and its functions:
 
-ToDoList1.java has the fillListForDebugging() which has list of tasks already filled.
+ToDoList.java has the fillListForDebugging() which has list of tasks already filled.
 updateItem() is for updating the task,printMenu() is for printing the list of Mainmenu.The 
 showList()  is to display the list of task already available
 and with the newly added tasks.The method addItem() will add the new task,removeItem()

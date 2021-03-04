@@ -1,12 +1,8 @@
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Mainc {
+
     public static void main(String[] args) throws Exception {
 
-        ToDoList1 listObj = new ToDoList1();
-
+        ToDoList listObj = new ToDoList();
 
         int menuItem = -1;
         while (menuItem != 8) {

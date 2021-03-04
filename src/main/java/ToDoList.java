@@ -4,18 +4,20 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class ToDoList1 {
+public class ToDoList {
 
     public static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
     private List<TodoItem> currentList;
 
 
-    public ToDoList1() {
+    public ToDoList() {
         this.currentList = new ArrayList<>();
         fillListForDebugging();
     }
 
-
+    /**
+     * create task lists.
+     */
     public void fillListForDebugging() {
         try {
             TodoItem item1 = new TodoItem("homework1", FORMAT.parse("12/06/2020"), "3 pm", "India", "Done", "Individual");
@@ -31,7 +33,9 @@ public class ToDoList1 {
         }
     }
 
-
+    /**
+     * Update Title, Date, Time, Location, Status, Category  in task list.
+     */
     public void updateItem() throws ParseException
     {
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +44,7 @@ public class ToDoList1 {
         System.out.print("--------");
         System.out.print("Which row do you want to update? (Enter number): ");
         int userInput = scanner.nextInt();
-        scanner.nextLine(); //clean the scanner Integer.parseInt("23"); -> 23
+        scanner.nextLine();
         int index = userInput - 1;
 
         TodoItem homework = currentList.get(index);
@@ -91,7 +95,9 @@ public class ToDoList1 {
 
     }
 
-
+    /**
+     * Prints list of Menu items for the user to select one option.
+     */
     public int printMenu() {
 
         Scanner scanner = new Scanner(System.in);
@@ -119,6 +125,10 @@ public class ToDoList1 {
 
     }
 
+    /**
+     * Prints the list of existing tasks and newly added tasks .
+     */
+
     public void showList() {
         System.out.println();
         System.out.println("----------------------");
@@ -130,8 +140,11 @@ public class ToDoList1 {
         }
         System.out.println("----------------------");
 
-
     }
+
+    /**
+     * Add new tasks to the list.
+     * */
 
     public void addItem() throws ParseException {
 
@@ -166,6 +179,10 @@ public class ToDoList1 {
 
     }
 
+    /**
+     * Delete particular tasks from the list .
+     */
+
     public void removeItem() {
         System.out.println("Delete a task");
         System.out.println("----------------------");
@@ -180,8 +197,11 @@ public class ToDoList1 {
         System.out.println("----------------------");
         System.out.println("Task Removed!");
 
-
     }
+
+    /**
+     * Delete all tasks from the list .
+     */
 
     public void removeAllTasks() {
 
@@ -200,10 +220,11 @@ public class ToDoList1 {
 
     }
 
+    /**
+     * Sort the tasks by Title,Date,Time,Location,Status,Category .
+     */
+
     public void sortTasks() {
-
-
-        //ask user what do you want to sort by:
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Sort by : 1) Title, 2) Date, 3) Time, 4) Location, 5) Status, 6) Category");
@@ -212,8 +233,6 @@ public class ToDoList1 {
         int index = scanner.nextInt();
         if ((index - 1) < 0 || index > currentList.size()) {
             System.out.println("Wrong index number! Please enter in range of 1 to " + currentList.size());
-        } else {
-
         }
         //Using Switch case to select index:
 
@@ -247,8 +266,12 @@ public class ToDoList1 {
         System.out.println("Successfully sorted task ");
     }
 
+    /**
+     * Search particular or group of tasks by project Category .
+     */
 
     public void searchTasks() {
+
         System.out.println("Search tasks by Project category");
         System.out.println("----------------------");
         System.out.println("Enter the Project category you want to search");
@@ -271,7 +294,11 @@ public class ToDoList1 {
                 System.out.println("Invalid input...The task you are searching is not in our project Category");
         }
     }
-   // Write as data
+
+    /**
+     * Creates new file and write the tasks list in to new file.
+     */
+
     public void writedata() throws Exception {
 
             File file = new File("NewDataFile.txt");
@@ -283,8 +310,11 @@ public class ToDoList1 {
             writer.close();
     }
 
-    // read as data
-   public ArrayList<TodoItem> readdata() throws Exception {
+    /**
+     * Read the tasks list from the file.
+     */
+
+    public ArrayList<TodoItem> readdata() throws Exception {
 
         ArrayList<TodoItem> items = new ArrayList<>();
         File file = new File("NewDataFile.txt");

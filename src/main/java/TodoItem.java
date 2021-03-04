@@ -2,7 +2,6 @@
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class TodoItem implements Serializable
@@ -25,11 +24,11 @@ public class TodoItem implements Serializable
         this.theStatus = status;
         this.theCategory = category;
     }
-
-
-
     public TodoItem(){}
 
+    /**
+     *  Setter methods for title,date,time,location,status,category.
+     */
 
     public void setTheCategory(String theCategory) {
         this.theCategory = theCategory;
@@ -46,7 +45,9 @@ public class TodoItem implements Serializable
     }
     public void setTheTime(String theTime){this.theTime = theTime; }
 
-
+    /**
+     *  getter methods for title,date,time,location,status,category.
+     */
 
     public String getTitle() {
 
