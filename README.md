@@ -14,7 +14,7 @@ and then restart the application with the former state restored.
 
 ## Getting Started
 
-The application can run directly via run command.
+The application can run directly via Gradle or via generated jar file.
 
 ### Run the ToDoList application
 
