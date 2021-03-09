@@ -16,7 +16,7 @@ restart the application with the former state restored.*
 
 *The code for this application uses the Gradle build tool (https://gradle.org.)
 Therefore, the first step is to install it. Instructions for installing Gradle are available in the official
-documentation(https://gradle.org/install)which describes several options. For installing Gradle on macOS, 
+documentation(https://gradle.org/install) which describes several options. For installing Gradle on macOS, 
 the recommendation is to use the Homebrew package manager:*
 
 *$ brew install gradle*
