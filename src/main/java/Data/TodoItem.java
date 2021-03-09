@@ -1,4 +1,4 @@
-
+package Data;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -15,7 +15,7 @@ public class TodoItem implements Serializable
     private String theCategory;
     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-    TodoItem(String title, Date date, String time, String location, String status, String category) throws IOException {
+    public TodoItem(String title, Date date, String time, String location, String status, String category) throws IOException {
 
         this.theTitle = title;
         this.theDate = date;
@@ -80,8 +80,35 @@ public class TodoItem implements Serializable
     }
 
     @Override
-    public String toString() {
+    public boolean equals(Object obj)
+    {
+        if (obj == null)
+            return false;
+        if (this == obj)
+            return true;
+        if(! (obj instanceof TodoItem))
+            return false;
 
+        TodoItem otherItem = (TodoItem) obj;
+        if(this.theTitle.equals(otherItem.getTitle()) &&
+           this.theDate.equals(otherItem.getDate()) &&
+           this.theTime.equals(otherItem.getTime()) &&
+           this.theLocation.equals(otherItem.getLocation())  &&
+           this.theStatus.equals(otherItem.getStatus()) &&
+           this.theCategory.equals(otherItem.getCategory()))
+            return true;
+        else
+            return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(theTitle,theDate,theTime,theLocation,theStatus,theCategory);
+    }
+
+    @Override
+    public String toString() {
         return theTitle + ", " + format.format(theDate) + ", " + theTime + ", " + theLocation + ", " + theStatus + ", " + theCategory;
     }
 

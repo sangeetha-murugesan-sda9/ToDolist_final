@@ -1,5 +1,7 @@
+package comparableStuff;
 
 import java.util.Comparator;
+import Data.TodoItem;
 
 public class LocationComparable implements Comparator<TodoItem>{
 
