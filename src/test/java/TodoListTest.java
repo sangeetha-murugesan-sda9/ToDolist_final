@@ -1,11 +1,13 @@
-import Data.ToDoList;
-import Data.TodoItem;
-import org.junit.jupiter.api.*;
+import Data.*;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
-import java.text.*;
-import java.util.*;
 
 public class TodoListTest {
 
@@ -13,7 +15,7 @@ public class TodoListTest {
     private static File file;
 
     @Test
-    public void beforeAllTests() throws ParseException, IOException {
+    public void beforeAll() throws ParseException, IOException {
         ArrayList<TodoItem> list = new ArrayList<>();
         file = new File("TestWriteDataFile.txt");
 
@@ -55,7 +57,7 @@ public class TodoListTest {
     }
 
     @Test
-    public void testUpdateTitle()  {
+    public void testUpdateTitle() throws ParseException {
         ToDoList list1 = new ToDoList();
         list1.add("Assignment1", "12/06/2020", "3 pm", "India", "Done", "Individual");
         String rownumber = "1";
@@ -76,7 +78,7 @@ public class TodoListTest {
     }
 
     @Test
-    public void testUpdateTime() {
+    public void testUpdateTime() throws ParseException {
         ToDoList list1 = new ToDoList();
         String rownumber = "1";
         String itemnumber = "2";
@@ -86,7 +88,7 @@ public class TodoListTest {
     }
 
     @Test
-    public void testUpdateLocation() {
+    public void testUpdateLocation() throws ParseException {
         ToDoList list1 = new ToDoList();
         String rownumber = "1";
         String itemnumber = "3";
@@ -96,7 +98,7 @@ public class TodoListTest {
     }
 
     @Test
-    public void testUpdateStatus(){
+    public void testUpdateStatus() throws ParseException {
         ToDoList list1 = new ToDoList();
         String rownumber = "1";
         String itemnumber = "4";
@@ -106,7 +108,7 @@ public class TodoListTest {
     }
 
     @Test
-    public void testUpdateProjectCategory(){
+    public void testUpdateProjectCategory() throws ParseException {
         ToDoList list1 = new ToDoList();
         String rownumber = "1";
         String itemnumber = "5";
@@ -123,7 +125,7 @@ public class TodoListTest {
         assertEquals(4,list.size());
     }
 
-    @Test //check
+    @Test
     public void testRemoveAllItemIfChoiceIsYes(){
         ToDoList list = new ToDoList();
         String choice = "Yes";
@@ -133,26 +135,23 @@ public class TodoListTest {
 
     @Test
     public void testSortTasks(){
-        ToDoList list1 = new ToDoList();
+        ToDoList list = new ToDoList();
         String index = "1";
-        assertFalse(list1.sortTasks(index));
+        assertFalse(list.sortTasks(index));
     }
 
-    @Test // check
+    @Test
     public void testSearchTasks(){
         ToDoList list1 = new ToDoList();
         String projectname = "Individual";
         assertEquals(projectname,list1.getList().get(0).getCategory());
-
     }
-
     @Test
     public void testWriteData() throws IOException {
         ToDoList list = new ToDoList();
         File filepath = new File("TestWriteDataFile.txt");
         assertTrue(list.writeData(filepath));
     }
-
 }
 
 

@@ -34,30 +34,32 @@ the program)from Main Menu in the terminal. The user has to select one option fr
 ## *List of java class files and its functions:*
 
 *Data.ToDoList.java has the fillListForDebugging() which has list of tasks already filled. The getInput(dataName) is for
-getting input from the user.updateTask() is for updating the task,printMenu() is for printing the list of Mainmenu.The
+getting input from the user.The method updateTask(rowNumber,itemNumber,newData) is for updating the task,printMenu() is for printing the list of Mainmenu.The
 showList() is to display the list of task already available and with the newly added tasks. 
-The method add(title,date,time,location,status, String category) will add the new task. 
-The method validateInteger(number) will validate the input from the user whether the given integer is between 
+The method add(title,date,time,location,status,category) will add the new task. 
+The method validateInteger(numberAsString,min,max) will validate the input from the user whether the given integer is between 
 maximum and minimum value.The validateDate(strDate)method will validate the date.
-The removeItem(indexnumber) will remove item from the list based on the index.*
+The removeItem(indexNumber) will remove item from the list based on the index.*
 
-*The removeAllTasks(choice) will remove all tasks from the list based on the choice. The sortTasks(indexnumber) will 
-sort the list of tasks by title,due date, time ,location, status, project category based on the indexnumber input from
-user.The searchTasks(projectname)is to search particular task by project category. The writeData(filepath) will 
+*The removeAllTasks(choice) will remove all tasks from the list based on the choice. The sortTasks(indexNumber) will 
+sort the list of tasks by title,due date, time ,location, status, project category based on the indexNumber input from
+user.The searchTasks(projectName)is to search particular task by project category. The writeData(filepath) will 
 write the list of task data in to newly created text file given in file path and readData(file) will read the data 
 (list of tasks) from text file.*
 
 *Tha method addInMain() will get the input task from the user and call Add(title,date,time, location,status,String
 category) for add the task in to list.The method removeItemInMain() get index of remove item as input from user and call
-removeItem(indexnumber) to remove the task based on the index.The removeAllTasksInMain() will get confirmation from user
+removeItem(indexNumber) to remove the task based on the index.The removeAllTasksInMain() will get confirmation from user
 whether he/she wants to delete all tasks and based on the confirmation,it will call removeAllTasks(choice) to remove all
 methods.*
 
 *The method sortTasksInMain() will get the input from user by which item he/she wants to sort by and then it call
-sortTask(indexnumber) for sorting. The searchTasksInMain() method will get project category as a input from the user and
-they it will call searchTasks(projectname).*
+sortTask(indexNumber) for sorting. The searchTasksInMain() method will get project category as a input from the user and
+they it will call searchTasks(projectName).*
 
-*The writeDataInMain() in main creates a new file and it will call writeData(filepath)to write data in to file.
+*The size() method will return the size of the list and getList() will return the list.
+
+*The writeDataInMain() in main creates a new file and it will call writeData(filePath)to write data in to file.
 The readDataInMain() calls the readData(file) to read list of tasks written on file.*
 
 *Data.TodoItem.java has constructor with parameters for initializing the title , due date, time , location,status,
@@ -75,42 +77,58 @@ main() which contains switch case for listing the Menu items.*
 ## *Usage:*
 
 *This Data.ToDoList application allows user can create new tasks,assign them a title, due date, time ,location,
-status,project category.*
+status,project category and allows the user to update tasks,search the task,sort the task,delete particular tasks,
+delete all tasks and save the task in a file and the user the read the saved file.*
 
-![Example1](Screenshots/Example1.png)
+## *Welcome to the TodoList:*
 
-### *After creating new Task:*
+![ScreenShot8](Screenshots/ScreenShot8.png)
 
-![Example2](Screenshots/Example2.png)
+## *Add new tasks:*
 
-### *The user can edit the tasks.*
+![ScreenShot10](Screenshots/ScreenShot10.png)
 
-![Example7](Screenshots/Example7.png)
+## *Remove tasks:*
 
-### *View the tasks:*
+![ScreenShot9](Screenshots/ScreenShot9.png)
 
-![Example3](Screenshots/Example3.png)
 
-### *Sort the tasks:*
+## *Remove all tasks if choice is Yes:*
 
-![Example5](Screenshots/Example5.png)
+![ScreenShot2](Screenshots/ScreenShot2.png)
 
-### *Remove particular tasks:*
+## *Remove all tasks if choice is No:*
 
-![Example4](Screenshots/Example4.png)
+![ScreenShot4](Screenshots/ScreenShot4.png)
 
-### *Search tasks by project category:*
+## *The user edit and update the tasks.*
 
-![Example6](Screenshots/Example6.png)
+![ScreenShot6](Screenshots/ScreenShot6.png)
+
+## *The user edit and update the task date.*
+
+![ScreenShot5](Screenshots/ScreenShot5.png)
+
+## *View the tasks:*
+
+![ScreenShot11](Screenshots/ScreenShot11.png)
+
+## *Sort the tasks:*
+
+![ScreenShot1](Screenshots/ScreenShot1.png)
+
+## *Search tasks by project category:*
+
+![ScreenShot3](Screenshots/ScreenShot3.png)
 
 *The user also can write the tasks list in to new text file by selecting menu option 8 and Read the tasks from file by
 selecting menu option 9.*
 
-### *Quit the application:*
+## *Quit the application:*
 
 *The user can quit the application by selecting option 10 from menulist.*
 
-![Example8](Screenshots/Example8.png)
+![ScreenShot7](Screenshots/ScreenShot7.png)
 
 
 

@@ -1,25 +1,27 @@
 package Data;
+
 import comparableStuff.*;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
 public class ToDoList {
 
     public static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
-    private List<TodoItem> currentList;
+    List<TodoItem> currentList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public ToDoList() {
-        this.currentList = new ArrayList<>();
+        this.currentList = new ArrayList<TodoItem>();
         fillListForDebugging();
     }
 
     /**
      * create task lists.
-     */
+     **/
+
     public void fillListForDebugging() {
         try {
             TodoItem item1 = new TodoItem("homework1", FORMAT.parse("12/06/2020"), "3 pm", "India", "Done", "Individual");
@@ -37,70 +39,71 @@ public class ToDoList {
 
     /**
      * Getting input from the user.
-     */
+     **/
+
     public String getInput(String dataName) {
-        System.out.println("Enter the task " + dataName + ": ");
+        System.out.println("Enter the " + dataName + ": ");
         return scanner.nextLine();
     }
 
     /**
      * Update Title, Date, Time, Location, Status, Category  in task list.
-     */
-    public void updateItemInMain()  {
+     **/
+
+    public void updateItemInMain() {
         System.out.print("Update  : Title, Date, Time, Location, Status, Category");
         showList();
         System.out.print("--------");
-        String rownumber = getInput("(number) Which row do you want to update?");
-        String itemnumber = getInput("item number you want to update: 0)title, 1)date, 2)Time, 3)Location, 4)Status, 5)Category");
-        String newdata = getInput("data you want to update");
-        updateTask(rownumber, itemnumber, newdata);
+        String rowNumber = getInput("row number you want to update");
+        String itemNumber = getInput("item number you want to update: 0)title, 1)date, 2)Time, 3)Location, 4)Status, 5)Category");
+        String newData = getInput("data you want to update");
+        updateTask(rowNumber, itemNumber, newData);
     }
 
-    public boolean updateTask(String rownumber, String itemnumber, String newdata) {
-        int userinput = validateInteger(rownumber);
-        int index1 = userinput - 1;
-        TodoItem homework = currentList.get(index1);
+    public boolean updateTask(String rowNumber, String itemNumber, String newData) {
 
-        int indexx = validateInteger(itemnumber);
+        int userInput = validateInteger(rowNumber, 1, currentList.size());
+        int index = userInput - 1;
+        TodoItem homework = currentList.get(index);
+        int indexx = Integer.parseInt(itemNumber);
 
         switch (indexx) {
             case 0:
-                homework.setTheTitle(newdata);
+                homework.setTheTitle(newData);
                 System.out.print("Updated new Title." + "\n");
                 break;
 
             case 1:
-                homework.setTheDate(validateDate(newdata));
-                System.out.print("Updated new Date." + "\n");
+                homework.setTheDate(validateDate(newData));
                 break;
 
             case 2:
-                homework.setTheTime(newdata);
+                homework.setTheTime(newData);
                 System.out.print("Updated new Time." + "\n");
                 break;
 
             case 3:
-                homework.setTheLocation(newdata);
+                homework.setTheLocation(newData);
                 System.out.print("Updated new Location." + "\n");
                 break;
 
             case 4:
-                homework.setTheStatus(newdata);
+                homework.setTheStatus(newData);
                 System.out.print("Updated new Status." + "\n");
                 break;
 
             case 5:
-                homework.setTheCategory(newdata);
+                homework.setTheCategory(newData);
                 System.out.print("Updated new Project." + "\n");
                 break;
         }
-        System.out.println("Successfully Updated");
         return true;
     }
 
     /**
      * Prints list of Menu items for the user to select one option.
-     */
+     **/
+
     public int printMenu() {
         System.out.println();
         System.out.println("Welcome to the Data.ToDoList" + "\n" +
@@ -120,13 +123,14 @@ public class ToDoList {
                 "10. Exit the program" + "\n");
 
         String choices = getInput("choice");
-        int choice = validateInteger(choices);
+        int choice = validateInteger(choices, 0, 10);
         return choice;
     }
 
     /**
      * Prints the list of existing tasks and newly added tasks .
-     */
+     **/
+
     public void showList() {
         System.out.println();
         System.out.println("----------------------" + "\n" +
@@ -141,7 +145,7 @@ public class ToDoList {
 
     /**
      * Getting input data item from the user to add a new task.
-     */
+     **/
 
     public void addInMain() {
         System.out.println("Add a task");
@@ -156,47 +160,11 @@ public class ToDoList {
     }
 
     /**
-     * Validate integer input from user.
-     */
-
-    public int validateInteger(String number) {
-        try {
-            int max = 10;
-            int min = 1;
-            int result = Integer.parseInt(number);
-            if ((result > max) || (result < min)) {
-                System.out.println("please enter a number in this range from min to max");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("please enter a correct number"+ e);
-        } return Integer.parseInt(number);
-    }
-
-    /**
-     * Validate date input from user.
-     */
-
-    public Date validateDate(String strDate) {
-
-        SimpleDateFormat FORMAT = new SimpleDateFormat("MM/dd/yyyy");
-        try {
-            if (!strDate.trim().equals("")) {
-                Date javaDate = FORMAT.parse(strDate);
-                System.out.println(strDate + " is valid date format");
-                return javaDate;
-            }
-        } catch (ParseException e) {
-            System.out.println(strDate + " is Invalid Date format");
-        }
-        return null;
-    }
-
-    /**
      * Add new tasks to the list.
-     */
-    public void add(String title, String date, String time, String location, String status, String category)  {
+     **/
 
-        //Date newdate = validateDate(date);
+    public void add(String title, String date, String time, String location, String status, String category) {
+
         TodoItem item = new TodoItem();
         item.setTheTitle(title);
         item.setTheDate(validateDate(date));
@@ -209,19 +177,54 @@ public class ToDoList {
     }
 
     /**
+     * Validate date entered by the user.
+     **/
+
+    public Date validateDate(String strDate) {
+        try {
+            Date javaDate = FORMAT.parse(strDate);
+            System.out.println(strDate + " is valid date format");
+            System.out.print("Updated new Date." + "\n");
+            return javaDate;
+        } catch (ParseException e) {
+            System.out.println(strDate + " " + "is Invalid Date format" + "\n");
+            return null;
+        }
+    }
+
+    /**
+     * Validate Integer entered by the user.
+     **/
+
+    public int validateInteger(String numberAsString, int min, int max) {
+        while (true) {
+            try {
+                int result = Integer.parseInt(numberAsString);
+                if ((result > max) || (result < min)) {
+                    numberAsString = getInput("please enter a number in this range from min to max");
+                } else {
+                    return result;
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("please enter a correct number" + e);
+            }
+        }
+    }
+
+    /**
      * Delete particular tasks from the list .
-     */
+     **/
+
     public void removeItemInMain() {
         System.out.println("Delete a task");
         System.out.println("----------------------");
         showList();
-        String indexnumber = getInput("to remove (Enter number)");
-        removeItem(indexnumber);
+        String indexNumber = getInput(" task number that you want to remove");
+        removeItem(indexNumber);
     }
 
-    public void removeItem(String indexnumber) {
-
-        int index = validateInteger(indexnumber);
+    public void removeItem(String indexNumber) {
+        int index = validateInteger(indexNumber, 1, currentList.size());
         if ((index - 1) < 0 || index > currentList.size()) {
             System.out.println("Wrong index number! Please enter in range of 1 to " + currentList.size());
         } else {
@@ -230,15 +233,17 @@ public class ToDoList {
             System.out.println("Task Removed!");
         }
     }
+
     /**
      * Delete all tasks from the list .
-     */
+     **/
+
     public void removeAllTasksInMain() {
 
         System.out.println("Remove all tasks");
         System.out.println("----------------------");
         showList();
-        String choice = getInput("Are you sure you'd like to delete all tasks? 'Yes' or 'No':");
+        String choice = getInput("choice...Are you sure you'd like to delete all tasks? 'Yes' or 'No':");
         removeAllTasks(choice);
     }
 
@@ -253,93 +258,96 @@ public class ToDoList {
 
     /**
      * Sort the tasks by Title,Date,Time,Location,Status,Category .
-     */
+     **/
+
     public void sortTasksInMain() {
 
         System.out.print("Sort by : 1) Title, 2) Date, 3) Time, 4) Location, 5) Status, 6) Category" + "\n");
         System.out.print("--------");
-        String indexnumber = getInput("number you want to sort by");
-        sortTasks(indexnumber);
-
+        String indexNumber = getInput(" Item number you want to sort by");
+        sortTasks(indexNumber);
     }
 
-    public boolean sortTasks(String indexnumber) {
+    public boolean sortTasks(String indexNumber) {
 
-        int index = validateInteger(indexnumber);
+        int index = validateInteger(indexNumber, 1, 6);
         if ((index - 1) < 0 || index > currentList.size()) {
             System.out.println("Wrong index number! Please enter in range of 1 to " + currentList.size());
         } else {
-            switch (index) {
-                case 1:
-                    Collections.sort(currentList, new TitleComparable());
-                    showList();
-                    break;
-                case 2:
-                    Collections.sort(currentList, new DateComparable());
-                    showList();
-                    break;
-                case 3:
-                    Collections.sort(currentList, new TimeComparable());
-                    showList();
-                    break;
-                case 4:
-                    Collections.sort(currentList, new LocationComparable());
-                    showList();
-                    break;
-                case 5:
-                    Collections.sort(currentList, new StatusComparable());
-                    showList();
-                    break;
-                case 6:
-                    Collections.sort(currentList, new ProjectComparable());
-                    showList();
-                    break;
-            }System.out.println("Successfully sorted task ");
         }
+
+        switch (index) {
+            case 1:
+                Collections.sort(currentList, new TitleComparable());
+                showList();
+                break;
+            case 2:
+                Collections.sort(currentList, new DateComparable());
+                showList();
+                break;
+            case 3:
+                Collections.sort(currentList, new TimeComparable());
+                showList();
+                break;
+            case 4:
+                Collections.sort(currentList, new LocationComparable());
+                showList();
+                break;
+            case 5:
+                Collections.sort(currentList, new StatusComparable());
+                showList();
+                break;
+            case 6:
+                Collections.sort(currentList, new ProjectComparable());
+                showList();
+                break;
+        }
+        System.out.println("Successfully sorted task ");
         return false;
     }
 
     /**
      * Search particular or group of tasks by project Category .
-     */
+     **/
+
     public void searchTasksInMain() {
 
         System.out.println("Search tasks by Project category");
         System.out.println("----------------------");
-        String projectname = getInput("Project category you want to search");
-        searchTasks(projectname);
+        String projectName = getInput("Project category you want to search");
+        searchTasks(projectName);
     }
 
-    public void searchTasks(String projectname) {
+    public void searchTasks(String projectName) {
 
         ArrayList<TodoItem> result = new ArrayList<TodoItem>();
         boolean search_flag = false;
 
         for (TodoItem item : currentList) {
-            if (item.getCategory().equalsIgnoreCase(projectname)) {
+            if (item.getCategory().equalsIgnoreCase(projectName)) {
                 result.add(item);
                 System.out.println(result.toString());
                 search_flag = true;
             }
         }
-        if (search_flag == false)
-        {
+        if (search_flag == false) {
             System.out.println("Invalid input...The task you are searching is not in our project Category");
         }
     }
 
     /**
      * Creates new file and write the tasks list in to new file.
-     */
+     **/
+
     public void writeDataInMain() throws Exception {
 
-        File filepath = new File("NewDataFile.txt");
-        writeData(filepath);
+        File filePath = new File("NewDataFile.txt");
+        writeData(filePath);
     }
 
-    public boolean writeData(File filepath) throws IOException {
+    public boolean writeData(File filePath) throws IOException {
 
-        FileWriter writer = new FileWriter(filepath);
+        FileWriter writer = new FileWriter(filePath);
         BufferedWriter writers = new BufferedWriter(writer);
         for (TodoItem items : currentList)
             if (items != null)
@@ -350,7 +358,8 @@ public class ToDoList {
 
     /**
      * Read the tasks list from the file.
-     */
+     **/
+
     public void readDataInMain() throws Exception {
         File file = new File("NewDataFile.txt");
         readData(file);
@@ -381,9 +390,11 @@ public class ToDoList {
         reader.close();
         return items;
     }
+
     /**
      * Returns the size of the TodoList.
-     */
+     **/
+
     public int size() {
         return currentList.size();
     }
