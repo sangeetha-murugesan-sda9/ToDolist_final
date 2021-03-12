@@ -6,37 +6,38 @@ public class Mainc
     public static void main(String[] args) throws Exception
     {
         ToDoList listObj = new ToDoList();
+        Caller caller = new Caller();
 
         int menuItem = -1;
         while (menuItem != 8) {
             menuItem = listObj.printMenu();
             switch (menuItem) {
                 case 1:
-                    listObj.addInMain();
+                    caller.addInMain();
                     break;
                 case 2:
-                    listObj.removeItemInMain();
+                    caller.removeItemInMain();
                     break;
                 case 3:
-                    listObj.removeAllTasksInMain();
+                    caller.removeAllTasksInMain();
                     break;
                 case 4:
                     listObj.showList();
                     break;
                 case 5:
-                    listObj.sortTasksInMain();
+                    caller.sortTasksInMain();
                     break;
                 case 6:
-                    listObj.searchTasksInMain();
+                    caller.searchTasksInMain();
                     break;
                 case 7:
-                    listObj.updateItemInMain();
+                    caller.updateItemInMain();
                     break;
                 case 8:
-                    listObj.writeDataInMain();
+                    caller.writeDataInMain();
                     break;
                 case 9:
-                    listObj.readDataInMain();
+                    caller.readDataInMain();
                     break;
                 case 10:
                     System.out.println("Goodbye!");

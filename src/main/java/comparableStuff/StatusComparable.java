@@ -1,7 +1,6 @@
 package comparableStuff;
 
 import Data.TodoItem;
-
 import java.util.Comparator;
 
 public class StatusComparable implements Comparator<TodoItem>{
