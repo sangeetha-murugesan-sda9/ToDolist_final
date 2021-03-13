@@ -2,11 +2,14 @@
 
 *The application will allow a user to create new tasks, assign them a title and due date, time ,location,status,project
 category and choose a project for that task to belong to.They will need to use a text based user interface via the
-command-line. Once they are using the application, the user should be able to also edit(update title and due date, time
+command-line. Once they are using the application, the user should be able to edit(update title,due date, time
 ,location,status,project category in the task list),sort tasks by title, due date, time ,location,status, project
 category in the task list, mark as done or remove tasks,list all tasks. They can search particular/group of tasks by
 Project category. They can also quit and save the current task list to file,read the list of tasks from file and then
-restart the application with the former state restored.*
+restart the application with the former state restored.The Integer value entered by the user can be validated and the 
+date entered by the user is also validated.The user is not allowed to enter and perform the operation in the 
+application, if he/she enters the wrong data in the place of Integer Input until the user enters the corrects 
+Integer*
 
 ## *Getting Started*
 
@@ -47,16 +50,6 @@ user.The searchTasks(projectName)is to search particular task by project categor
 write the list of task data in to newly created text file given in file path and readData(file) will read the data 
 (list of tasks) from text file.*
 
-*Tha method addInMain() will get the input task from the user and call Add(title,date,time, location,status,String
-category) for add the task in to list.The method removeItemInMain() get index of remove item as input from user and call
-removeItem(indexNumber) to remove the task based on the index.The removeAllTasksInMain() will get confirmation from user
-whether he/she wants to delete all tasks and based on the confirmation,it will call removeAllTasks(choice) to remove all
-methods.*
-
-*The method sortTasksInMain() will get the input from user by which item he/she wants to sort by and then it call
-sortTask(indexNumber) for sorting. The searchTasksInMain() method will get project category as a input from the user and
-they it will call searchTasks(projectName).*
-
 *The size() method will return the size of the list and getList() will return the list.
 
 *The writeDataInMain() in main creates a new file and it will call writeData(filePath)to write data in to file.
@@ -73,6 +66,18 @@ o1, Data.TodoItem o2) for sorting the list of tasks by status. ThecomparableStuf
 Data.TodoItem o1, Data.TodoItem o2) for sorting the list of tasks by time. The comparableStuff.TitleComparable.java
 contains compare(Data.TodoItem o1, Data.TodoItem o2) for sorting the list of tasks by title. The Main.Mainc.java has
 main() which contains switch case for listing the Menu items.*
+
+*Data.Caller has methods that are to be called by the main method.Tha method addInMain() will get the input task from the user and call Add(title,date,time, location,status,String
+category) for add the task in to list.The method removeItemInMain() get index of remove item as input from user and call
+removeItem(indexNumber) to remove the task based on the index.The removeAllTasksInMain() will get confirmation from user
+whether he/she wants to delete all tasks and based on the confirmation,it will call removeAllTasks(choice) to remove all
+methods.*
+
+*The method sortTasksInMain() will get the input from user by which item he/she wants to sort by and then it call
+sortTask(indexNumber) for sorting. The searchTasksInMain() method will get project category as a input from the user and
+they it will call searchTasks(projectName).*
+
+*Main.mainc has a switch statement to select and perform the function that user selects from the main menu*
 
 ## *Usage:*
 
