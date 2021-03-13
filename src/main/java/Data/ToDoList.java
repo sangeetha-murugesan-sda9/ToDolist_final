@@ -1,7 +1,6 @@
 package Data;
 
 import comparableStuff.*;
-
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -198,7 +197,7 @@ public class ToDoList {
                 }
 
             } catch (IllegalArgumentException e) {
-                numberAsString = getInput(" correct number please"+" " + e);
+                numberAsString = getInput(" correct number please...."+" " + e);
             }
         }
     }

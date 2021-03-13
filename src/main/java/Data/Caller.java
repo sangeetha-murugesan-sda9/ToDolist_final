@@ -2,7 +2,6 @@ package Data;
 import java.io.File;
 import java.util.Scanner;
 
-
 public class Caller {
 
     Scanner scanner = new Scanner(System.in);
