@@ -28,9 +28,9 @@ recommendation is to use the Homebrew package manager:*
 
 ## *Run the Data.ToDoList application*
 
-*In the root folder, start the application with running main() method in Main.Mainc.java file.
+*In the root folder, start the application with running main() method in Main.Mainc.java file.*
 
-Once you run the application,it will show list of options (Add a task,Delete a task, Delete all task,List all task,Sort
+*Once you run the application,it will show list of options (Add a task,Delete a task, Delete all task,List all task,Sort
 tasks, Search for a task by Project category, Update the items,Save the tasks in a file,Read the tasks from file, Exit
 the program)from Main Menu in the terminal. The user has to select one option from the Menu and follow the
 instructions.*
