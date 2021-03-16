@@ -27,8 +27,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByTitleWhenComparingBiggerElement()
     {
-        TitleComparable c = new TitleComparable();
-        int actual = c.compare(item1, item2);
+        ItemComparable titleComparable = new ItemComparable('f');
+        int actual = titleComparable.compare(item1, item2);
         assertTrue(actual > 0);
         assertEquals(true, actual > 0);
     }
@@ -36,8 +36,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByTitle()
     {
-        TitleComparable c = new TitleComparable();
-        int actual = c.compare(item2, item1);
+        ItemComparable compareTitle = new ItemComparable('f');
+        int actual = compareTitle.compare(item2, item1);
         assertTrue(actual < 0);
         assertEquals(true, actual < 0);
     }
@@ -45,8 +45,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByDate()
     {
-        DateComparable c = new DateComparable();
-        int actual = c.compare(item1, item2);
+        ItemComparable dateComparable = new ItemComparable('a');
+        int actual = dateComparable.compare(item1, item2);
         assertTrue(actual < 0);
         assertEquals(true, actual < 0);
     }
@@ -54,8 +54,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByTime()
     {
-        TimeComparable c = new TimeComparable();
-        int actual = c.compare(item3, item4);
+        ItemComparable compareTime = new ItemComparable('e');
+        int actual = compareTime.compare(item3, item4);
         assertTrue(actual > 0);
         assertEquals(true, actual > 0);
     }
@@ -63,8 +63,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByLocation()
     {
-        LocationComparable c = new LocationComparable();
-        int actual = c.compare(item4, item3);
+        ItemComparable compareLocation = new ItemComparable('c');
+        int actual = compareLocation.compare(item4, item3);
         assertTrue(actual < 0);
         assertEquals(true, actual < 0);
     }
@@ -72,8 +72,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByStatus()
     {
-        StatusComparable c = new StatusComparable();
-        int actual = c.compare(item1, item2);
+        ItemComparable compareStatus = new ItemComparable('d');
+        int actual = compareStatus.compare(item1, item2);
         assertTrue(actual < 0);
         assertEquals(true, actual < 0);
     }
@@ -81,8 +81,8 @@ public class comparableStuffTest
     @Test
     public void testComparingTaskByCategory()
     {
-        ProjectComparable c = new ProjectComparable();
-        int actual = c.compare(item3, item4);
+        ItemComparable projectComparable = new ItemComparable('b');
+        int actual = projectComparable.compare(item3, item4);
         assertTrue(actual > 0);
         assertEquals(true, actual > 0);
     }

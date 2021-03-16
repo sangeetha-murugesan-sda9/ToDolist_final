@@ -37,7 +37,7 @@ instructions.*
 
 ## *List of java class files and its functions:*
 
-*Data.ToDoList.java has the fillListForDebugging() which has list of tasks already filled. The getInput(dataName) is for
+*The Data.ToDoList.java has the fillListForDebugging() which has list of tasks already filled. The getInput(dataName) is for
 getting input from the user.The method updateTask(rowNumber,itemNumber,newData) is for updating the task,printMenu() is
 for printing the list of Mainmenu.The showList() is to display the list of task already available and with the newly
 added tasks. The method add(title,date,time,location,status,category) will add the new task. The method validateInteger(
@@ -52,24 +52,16 @@ the list of task data in to newly created text file given in file path and readD
 (list of tasks) from text file.The size() method will return the size of the list and getList() will return the 
 list of tasks stored.*
 
-*Data.TodoItem.java has constructor with parameters for initializing the title,due date,time,location,status, project 
-category.It has the getter and setter methods for list of tasks.The comparableStuff.DateComparable.java contains 
-compare(Data.TodoItem o1, Data.TodoItem o2) for sorting the list of tasks by date.*
+*The Data.TodoItem.java has constructor with parameters for initializing the title,due date,time,location,status, project 
+category.It has the getter and setter methods for list of tasks.*
 
-*The comparableStuff.LocationComparable.java contains compare(Data.TodoItem o1, Data.TodoItem o2) for sorting 
-the list of tasks by location.
-The comparableStuff.ProjectComparable.java contains compare(Data.TodoItem o1, 
-Data.TodoItem o2)for sorting the list of tasks by Project category.
-The comparableStuff.StatusComparable.java contains 
-compare(Data.TodoItem o1, Data.TodoItem o2) for sorting the list of tasks by status. 
-The comparableStuff.TimeComparable.java contains compare(Data.TodoItem o1, Data.TodoItem o2) for sorting the list of 
-tasks by time. 
-The comparableStuff.TitleComparable.java contains compare(Data.TodoItem o1, Data.TodoItem o2) for sorting
-the list of tasks by title.*
+*The comparableStuff.ItemComparable.java contains switch case for sorting the list of tasks by location,title,project
+category,status,time,date with compare(Data.TodoItem o1, Data.TodoItem o2)  for sorting the list of tasks by date.*
 
-*The Main.Mainc.java has main() which contains switch case for listing the Menu items.*
+*The Main.Mainc.java has main() which contains switch case for listing the Menu items and calls the particular function
+ to perform based on the choice selected by the user*
 
-*Data.Caller has methods that are to be called by the main method.Tha method addInMain() will get the input task from
+*The Data.Caller.java has methods that are to be called by the main method.Tha method addInMain() will get the input task from
 the user and call Add(title,date,time, location,status,String category) for add the task in to list.The method
 removeItemInMain() get index of remove item as input from user and call removeItem(indexNumber) to remove the task based
 on the index.The removeAllTasksInMain() will get confirmation from user whether he/she wants to delete all tasks and
@@ -81,8 +73,6 @@ they it will call searchTasks(projectName).*
 
 *The writeDataInMain() creates a new file and it will call writeData(filePath)to write data in to file. The
 readDataInMain() calls the readData(file) to read list of tasks written on file.*
-
-*Main.mainc has a switch statement to select and perform the function that user selects from the main menu.*
 
 ## *Usage:*
 

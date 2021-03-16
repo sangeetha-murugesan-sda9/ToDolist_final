@@ -7,11 +7,18 @@ public class Caller {
     Scanner scanner = new Scanner(System.in);
     ToDoList list = new ToDoList();
 
+    /**
+     *  Getting input from the user.
+     */
     public String getInputFromUser(String dataName) {
         System.out.println("Enter the " + dataName + ": ");
         return scanner.nextLine();
     }
 
+    /**
+     *  Getting input from the user to update the task items (Title, Date, Time, Location, Status, Category) in list of tasks.
+     *  based on the choice selected by the user.
+     */
     public void updateItemInMain() {
         System.out.print("Update  : Title, Date, Time, Location, Status, Category");
         list.showList();
@@ -22,6 +29,9 @@ public class Caller {
         list.updateTask(rowNumber, itemNumber, newData);
     }
 
+    /**
+     *  Getting input from the user to add the task items (Title, Date, Time, Location, Status, Category) in list of tasks.
+     */
     public void addInMain() {
         System.out.println("Add a task");
         System.out.println("----------------------");
@@ -33,6 +43,10 @@ public class Caller {
         String category = getInputFromUser("category");
         list.add(title, date, time, location, status, category);
     }
+
+    /**
+     *  Getting input from the user to remove particular the task from list of tasks based on the choice selected by user.
+     */
     public void removeItemInMain() {
         System.out.println("Delete a task");
         System.out.println("----------------------");
@@ -41,6 +55,9 @@ public class Caller {
         list.removeItem(indexNumber);
     }
 
+    /**
+     *  Getting input from the user to remove all the task from list of tasks based on the choice selected by user.
+     */
     public void removeAllTasksInMain() {
 
         System.out.println("Remove all tasks");
@@ -50,6 +67,10 @@ public class Caller {
         list.removeAllTasks(choice);
     }
 
+    /**
+     *  Getting input from the user to search and display the paricular/ group of task from list of tasks based on the project
+     *  category given by user.
+     */
     public void searchTasksInMain() {
 
         System.out.println("Search tasks by Project category");
@@ -58,6 +79,9 @@ public class Caller {
         list.searchTasks(projectName);
     }
 
+    /**
+     *  Getting input from the user to sort and display the list of tasks based on the item selected by user.
+     */
     public void sortTasksInMain() {
 
         System.out.print("Sort by : 1) Title, 2) Date, 3) Time, 4) Location, 5) Status, 6) Category" + "\n");
@@ -66,12 +90,18 @@ public class Caller {
         list.sortTasks(indexNumber);
     }
 
+    /**
+     *  Creating a new file and writing the list of tasks in to the file.
+     */
     public void writeDataInMain() throws Exception {
 
         File filePath = new File("NewDataFile.txt");
         list.writeData(filePath);
     }
 
+    /**
+     *  Reading list of tasks from file.
+     */
     public void readDataInMain() throws Exception {
         File file = new File("NewDataFile.txt");
         list.readData(file);

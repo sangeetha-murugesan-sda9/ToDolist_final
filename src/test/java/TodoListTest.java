@@ -1,13 +1,12 @@
 import Data.*;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TodoListTest {
@@ -178,5 +177,45 @@ public class TodoListTest {
         String index = "1";
         list.removeItem(index);
         assertEquals(3, list.size());
+    }
+
+    @Test
+    public void testValidateIntegerShouldThrowIllegalArgumentExceptionWithInValidInteger () {
+        ToDoList list = new ToDoList();
+        String number = "factor";
+        assertThrows(
+                Exception.class,
+                () -> list.validateInteger(number,1,5)
+        );
+    }
+
+    @Test
+    public void testValidateIntegerShouldNotThrowIllegalArgumentExceptionWithValidInteger () {
+        ToDoList list = new ToDoList();
+        String number = "1";
+        assertDoesNotThrow(
+                () -> list.validateInteger(number,1,5));
+    }
+
+    @Test
+    public void testValidatedateShouldReturnNullWithInValidDate () {
+        ToDoList list = new ToDoList();
+        String Date = "factor";
+        assertNull(list.validateDate(Date));
+    }
+
+    @Test
+    public void testValidatedateShouldNotThrowParseExceptionWithValidDate () {
+        ToDoList list = new ToDoList();
+        String date = "12/04/2021";
+        assertDoesNotThrow(
+        () -> list.validateDate(date));
+    }
+
+    @Test
+    public void testValidatedateShouldNotReturnNullWithValidDate () {
+        ToDoList list = new ToDoList();
+        String date = "12/04/2021";
+        assertNotNull(list.validateDate(date));
     }
 }
