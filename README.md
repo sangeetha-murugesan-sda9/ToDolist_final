@@ -16,7 +16,7 @@ will ask for the corrects Integer between the maximum and minimum value.*
 *The code for this application uses the Gradle build tool (https://gradle.org.). Instructions for installing Gradle are
 available in the official documentation(https://gradle.org/install) which describes several options.*
 
-*The application can also be run via terminal with the Gradle.The user have to download the external .jar file by
+*The application can also be run via terminal with the Gradle. The user have to download the external .jar file by
 running the following commands via terminal.*
 *step 1.* 
 ```bash
