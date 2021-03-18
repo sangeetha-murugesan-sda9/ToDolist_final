@@ -1,43 +1,39 @@
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Mainc {
+
     public static void main(String[] args) throws Exception {
 
-        ToDoList1 listObj = new ToDoList1();
-
-
+        ToDoList listObj = new ToDoList();
         int menuItem = -1;
-        while (menuItem != 8) {
+        while (menuItem != 10) {
             menuItem = listObj.printMenu();
             switch (menuItem) {
                 case 1:
-                    listObj.addItem();
+                    listObj.addInMain();
                     break;
                 case 2:
-                    listObj.removeItem();
+                    listObj.removeItemInMain();
                     break;
                 case 3:
-                    listObj.removeAllTasks();
+                    listObj.removeAllTasksInMain();
                     break;
                 case 4:
                     listObj.showList();
                     break;
                 case 5:
-                    listObj.sortTasks();
+                    listObj.sortTasksInMain();
                     break;
                 case 6:
-                    listObj.searchTasks();
+                    listObj.searchTasksInMain();
                     break;
                 case 7:
-                    listObj.updateItem();
+                    listObj.updateItemInMain();
                     break;
                 case 8:
-                    listObj.writedata();
+                    listObj.writeDataInMain();
                     break;
                 case 9:
-                    listObj.readdata();
+                    listObj.readDataInMain();
                     break;
                 case 10:
                     System.out.println("Goodbye!");

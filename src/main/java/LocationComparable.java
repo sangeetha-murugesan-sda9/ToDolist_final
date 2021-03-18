@@ -4,8 +4,8 @@ import java.util.Comparator;
 public class LocationComparable implements Comparator<TodoItem>{
 
     @Override
-    public int compare(TodoItem o1, TodoItem o2)
+    public int compare(TodoItem objOne, TodoItem objTwo)
     {
-        return o1.getLocation().compareTo(o2.getLocation());
+        return objOne.getLocation().compareTo(objTwo.getLocation());
     }
 }

@@ -3,8 +3,8 @@ import java.util.Comparator;
 public class DateComparable implements Comparator<TodoItem>
 {
     @Override
-    public int compare(TodoItem o1, TodoItem o2)
+    public int compare(TodoItem objOne, TodoItem objTwo)
     {
-        return o1.getDate().compareTo(o2.getDate());
+        return objOne.getDate().compareTo(objTwo.getDate());
     }
 }

@@ -3,8 +3,8 @@ import java.util.Comparator;
 public class StatusComparable implements Comparator<TodoItem>{
 
     @Override
-    public int compare(TodoItem o1, TodoItem o2)
+    public int compare(TodoItem objOne, TodoItem objTwo)
     {
-        return o1.getStatus().compareTo(o2.getStatus());
+        return objOne.getStatus().compareTo(objTwo.getStatus());
     }
 }

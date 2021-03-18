@@ -3,8 +3,8 @@ import java.util.Comparator;
 public class ProjectComparable implements Comparator<TodoItem>{
 
     @Override
-    public int compare(TodoItem o1, TodoItem o2)
+    public int compare(TodoItem objOne, TodoItem objTwo)
     {
-        return o1.getCategory().compareTo(o2.getCategory());
+        return objOne.getCategory().compareTo(objTwo.getCategory());
     }
 }
