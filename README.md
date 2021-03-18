@@ -27,7 +27,7 @@ running the following commands via terminal.*
 java - jar build/libs/individual_with_gradle-1.0-SNAPSHOT.jar
 ``` 
 
-## *Run the Data.ToDoList application*
+## *Run the Data.ToDoList application* 
 
 *In the root folder, start the application with running main() method in Mainc.java file.*
 
