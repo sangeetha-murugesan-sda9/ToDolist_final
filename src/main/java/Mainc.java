@@ -1,43 +1,39 @@
-package Main;
-import Data.*;
 
-public class Mainc{
+public class Mainc {
 
-    public static void main(String[] args) throws Exception
-    {
+    public static void main(String[] args) throws Exception {
+
         ToDoList listObj = new ToDoList();
-        Caller caller = new Caller();
-
         int menuItem = -1;
-        while (menuItem != 8) {
+        while (menuItem != 10) {
             menuItem = listObj.printMenu();
             switch (menuItem) {
                 case 1:
-                    caller.addInMain();
+                    listObj.addInMain();
                     break;
                 case 2:
-                    caller.removeItemInMain();
+                    listObj.removeItemInMain();
                     break;
                 case 3:
-                    caller.removeAllTasksInMain();
+                    listObj.removeAllTasksInMain();
                     break;
                 case 4:
                     listObj.showList();
                     break;
                 case 5:
-                    caller.sortTasksInMain();
+                    listObj.sortTasksInMain();
                     break;
                 case 6:
-                    caller.searchTasksInMain();
+                    listObj.searchTasksInMain();
                     break;
                 case 7:
-                    caller.updateItemInMain();
+                    listObj.updateItemInMain();
                     break;
                 case 8:
-                    caller.writeDataInMain();
+                    listObj.writeDataInMain();
                     break;
                 case 9:
-                    caller.readDataInMain();
+                    listObj.readDataInMain();
                     break;
                 case 10:
                     System.out.println("Goodbye!");
@@ -45,6 +41,7 @@ public class Mainc{
                     System.out.println("Enter a valid option");
             }
         }
+
     }
 
 }
