@@ -1,22 +1,20 @@
-package Data;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class TodoItem implements Serializable
 {
-
     private String theTitle;
     private Date theDate;
     private String theTime;
     private String theLocation;
     private String theStatus;
     private String theCategory;
-    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 
-    public TodoItem(String title, Date date, String time, String location, String status, String category) throws IOException {
+    TodoItem(String title, Date date, String time, String location, String status, String category) throws IOException {
 
         this.theTitle = title;
         this.theDate = date;
@@ -51,33 +49,32 @@ public class TodoItem implements Serializable
      */
 
     public String getTitle() {
-
         return theTitle;
     }
 
     public Date getDate() {
-
         return theDate;
     }
 
     public String getTime() {
-
         return theTime;
     }
 
     public String getLocation() {
-
         return theLocation;
     }
 
     public String getStatus() {
-
         return theStatus;
     }
 
     public String getCategory() {
-
         return theCategory;
+    }
+
+    @Override
+    public String toString() {
+        return theTitle + ", " + format.format(theDate) + ", " + theTime + ", " + theLocation + ", " + theStatus + ", " + theCategory;
     }
 
     @Override
@@ -92,28 +89,20 @@ public class TodoItem implements Serializable
 
         TodoItem otherItem = (TodoItem) obj;
         if(this.theTitle.equals(otherItem.getTitle()) &&
-           this.theDate.equals(otherItem.getDate()) &&
-           this.theTime.equals(otherItem.getTime()) &&
-           this.theLocation.equals(otherItem.getLocation())  &&
-           this.theStatus.equals(otherItem.getStatus()) &&
-           this.theCategory.equals(otherItem.getCategory()))
+                this.theDate.equals(otherItem.getDate()) &&
+                this.theTime.equals(otherItem.getTime()) &&
+                this.theLocation.equals(otherItem.getLocation())  &&
+                this.theStatus.equals(otherItem.getStatus()) &&
+                this.theCategory.equals(otherItem.getCategory()))
             return true;
         else
             return false;
-
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(theTitle,theDate,theTime,theLocation,theStatus,theCategory);
     }
-
-    @Override
-    public String toString() {
-        return theTitle + ", " + format.format(theDate) + ", " + theTime + ", " + theLocation + ", " + theStatus + ", " + theCategory;
-    }
-
-
 }
 
 
