@@ -7,4 +7,5 @@ public class StatusComparable implements Comparator<TodoItem>{
     {
         return objOne.getStatus().compareTo(objTwo.getStatus());
     }
+
 }
