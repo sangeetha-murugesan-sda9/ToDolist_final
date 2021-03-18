@@ -1,7 +1,6 @@
 package Data;
 
 import comparableStuff.*;
-
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +9,7 @@ import java.util.*;
 public class ToDoList {
 
     public static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
-    List<TodoItem> currentList = new ArrayList<>();
+    List<TodoItem> currentList ;
     Scanner scanner = new Scanner(System.in);
 
     public ToDoList() {
@@ -20,7 +19,7 @@ public class ToDoList {
 
     /**
      * create task lists.
-     **/
+     */
 
     public void fillListForDebugging() {
         try {
@@ -39,7 +38,7 @@ public class ToDoList {
 
     /**
      * Getting input from the user.
-     **/
+     */
 
     public String getInput(String dataName) {
         System.out.println("Enter the " + dataName + ": ");
@@ -48,17 +47,7 @@ public class ToDoList {
 
     /**
      * Update Title, Date, Time, Location, Status, Category  in task list.
-     **/
-
-    public void updateItemInMain() {
-        System.out.print("Update  : Title, Date, Time, Location, Status, Category");
-        showList();
-        System.out.print("--------");
-        String rowNumber = getInput("row number you want to update");
-        String itemNumber = getInput("item number you want to update: 0)title, 1)date, 2)Time, 3)Location, 4)Status, 5)Category");
-        String newData = getInput("data you want to update");
-        updateTask(rowNumber, itemNumber, newData);
-    }
+     */
 
     public boolean updateTask(String rowNumber, String itemNumber, String newData) {
 
@@ -102,7 +91,7 @@ public class ToDoList {
 
     /**
      * Prints list of Menu items for the user to select one option.
-     **/
+     */
 
     public int printMenu() {
         System.out.println();
@@ -129,7 +118,7 @@ public class ToDoList {
 
     /**
      * Prints the list of existing tasks and newly added tasks .
-     **/
+     */
 
     public void showList() {
         System.out.println();
@@ -145,7 +134,7 @@ public class ToDoList {
 
     /**
      * Getting input data item from the user to add a new task.
-     **/
+     */
 
     public void addInMain() {
         System.out.println("Add a task");
@@ -161,7 +150,7 @@ public class ToDoList {
 
     /**
      * Add new tasks to the list.
-     **/
+     */
 
     public void add(String title, String date, String time, String location, String status, String category) {
 
@@ -178,7 +167,7 @@ public class ToDoList {
 
     /**
      * Validate date entered by the user.
-     **/
+     */
 
     public Date validateDate(String strDate) {
         try {
@@ -186,7 +175,7 @@ public class ToDoList {
             System.out.println(strDate + " is valid date format");
             System.out.print("Updated new Date." + "\n");
             return javaDate;
-        } catch (ParseException e) {
+        } catch (Exception e) {
             System.out.println(strDate + " " + "is Invalid Date format" + "\n");
             return null;
         }
@@ -194,9 +183,10 @@ public class ToDoList {
 
     /**
      * Validate Integer entered by the user.
-     **/
+     */
 
-    public int validateInteger(String numberAsString, int min, int max) {
+    public int validateInteger(String numberAsString, int min, int max)
+    {
         while (true) {
             try {
                 int result = Integer.parseInt(numberAsString);
@@ -205,23 +195,16 @@ public class ToDoList {
                 } else {
                     return result;
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println("please enter a correct number" + e);
+
+            } catch (Exception e) {
+                numberAsString = getInput(" correct number please...."+" " + e);
             }
         }
     }
 
     /**
      * Delete particular tasks from the list .
-     **/
-
-    public void removeItemInMain() {
-        System.out.println("Delete a task");
-        System.out.println("----------------------");
-        showList();
-        String indexNumber = getInput(" task number that you want to remove");
-        removeItem(indexNumber);
-    }
+     */
 
     public void removeItem(String indexNumber) {
         int index = validateInteger(indexNumber, 1, currentList.size());
@@ -236,16 +219,7 @@ public class ToDoList {
 
     /**
      * Delete all tasks from the list .
-     **/
-
-    public void removeAllTasksInMain() {
-
-        System.out.println("Remove all tasks");
-        System.out.println("----------------------");
-        showList();
-        String choice = getInput("choice...Are you sure you'd like to delete all tasks? 'Yes' or 'No':");
-        removeAllTasks(choice);
-    }
+     */
 
     public void removeAllTasks(String choice) {
 
@@ -258,47 +232,35 @@ public class ToDoList {
 
     /**
      * Sort the tasks by Title,Date,Time,Location,Status,Category .
-     **/
-
-    public void sortTasksInMain() {
-
-        System.out.print("Sort by : 1) Title, 2) Date, 3) Time, 4) Location, 5) Status, 6) Category" + "\n");
-        System.out.print("--------");
-        String indexNumber = getInput(" Item number you want to sort by");
-        sortTasks(indexNumber);
-    }
+     */
 
     public boolean sortTasks(String indexNumber) {
 
         int index = validateInteger(indexNumber, 1, 6);
-        if ((index - 1) < 0 || index > currentList.size()) {
-            System.out.println("Wrong index number! Please enter in range of 1 to " + currentList.size());
-        } else {
-        }
 
         switch (index) {
             case 1:
-                Collections.sort(currentList, new TitleComparable());
+                Collections.sort(currentList, new ItemComparable('f'));
                 showList();
                 break;
             case 2:
-                Collections.sort(currentList, new DateComparable());
+                Collections.sort(currentList, new ItemComparable('a'));
                 showList();
                 break;
             case 3:
-                Collections.sort(currentList, new TimeComparable());
+                Collections.sort(currentList, new ItemComparable('e'));
                 showList();
                 break;
             case 4:
-                Collections.sort(currentList, new LocationComparable());
+                Collections.sort(currentList, new ItemComparable('c'));
                 showList();
                 break;
             case 5:
-                Collections.sort(currentList, new StatusComparable());
+                Collections.sort(currentList, new ItemComparable('d'));
                 showList();
                 break;
             case 6:
-                Collections.sort(currentList, new ProjectComparable());
+                Collections.sort(currentList, new ItemComparable('b'));
                 showList();
                 break;
         }
@@ -308,15 +270,8 @@ public class ToDoList {
 
     /**
      * Search particular or group of tasks by project Category .
-     **/
+     */
 
-    public void searchTasksInMain() {
-
-        System.out.println("Search tasks by Project category");
-        System.out.println("----------------------");
-        String projectName = getInput("Project category you want to search");
-        searchTasks(projectName);
-    }
 
     public void searchTasks(String projectName) {
 
@@ -337,13 +292,8 @@ public class ToDoList {
 
     /**
      * Creates new file and write the tasks list in to new file.
-     **/
+     */
 
-    public void writeDataInMain() throws Exception {
-
-        File filePath = new File("NewDataFile.txt");
-        writeData(filePath);
-    }
 
     public boolean writeData(File filePath) throws IOException {
 
@@ -358,12 +308,7 @@ public class ToDoList {
 
     /**
      * Read the tasks list from the file.
-     **/
-
-    public void readDataInMain() throws Exception {
-        File file = new File("NewDataFile.txt");
-        readData(file);
-    }
+     */
 
     public ArrayList<TodoItem> readData(File file) throws Exception {
 
@@ -393,7 +338,7 @@ public class ToDoList {
 
     /**
      * Returns the size of the TodoList.
-     **/
+     */
 
     public int size() {
         return currentList.size();
