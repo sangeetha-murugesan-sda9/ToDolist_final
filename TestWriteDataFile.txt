@@ -1,0 +1,4 @@
+Assignment, 12/06/2020, 3 pm, India, Done, Individual
+MailCheck, 16/03/2021, 5 pm, Sweden, Not Done, Group
+ProjectWork, 10/09/2022, 9 pm, Paris, Done, Individual
+HomeWork, 01/12/2019, 2 pm, London, Done, Group

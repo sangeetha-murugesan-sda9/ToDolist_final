@@ -16,6 +16,17 @@ will ask for the corrects Integer between the maximum and minimum value.*
 *The code for this application uses the Gradle build tool (https://gradle.org.). Instructions for installing Gradle are
 available in the official documentation(https://gradle.org/install) which describes several options.*
 
+*The application can also be run via terminal with the Gradle.The user have to download the external .jar file by
+running the following commands via terminal.*
+*step 1.* 
+```bash
+./gradlew jar
+```
+*step 2.*
+```bash
+java - jar build/libs/individual_with_gradle-1.0-SNAPSHOT.jar
+``` 
+
 ## *Run the Data.ToDoList application*
 
 *In the root folder, start the application with running main() method in Mainc.java file.*
