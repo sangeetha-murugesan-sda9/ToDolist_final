@@ -1,3 +1,7 @@
+package comparableStuff;
+
+import Data.TodoItem;
+
 import java.util.Comparator;
 
 public class TitleComparable implements Comparator<TodoItem> {

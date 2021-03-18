@@ -1,3 +1,6 @@
+package comparableStuff;
+
+import Data.TodoItem;
 import java.util.Comparator;
 
 public class DateComparable implements Comparator<TodoItem>

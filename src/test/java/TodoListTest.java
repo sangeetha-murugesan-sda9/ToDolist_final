@@ -1,68 +1,157 @@
-import org.junit.jupiter.api.BeforeEach;
+import Data.*;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
-import java.text.*;
-import java.util.*;
 
 public class TodoListTest {
+
     public static SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy");
-    ArrayList<TodoItem> list;
+    private static File file;
 
-    @BeforeEach
-    public void beforeEachTest() throws ParseException, IOException {
-        list = new ArrayList<>();
+    @Test
+    public void beforeAll() throws ParseException, IOException {
+        ArrayList<TodoItem> list = new ArrayList<>();
+        file = new File("TestWriteDataFile.txt");
 
-        TodoItem item1 = new TodoItem("Assignment1", FORMAT.parse("12/06/2020"), "3 pm", "India", "Done", "Individual");
-        TodoItem item2 = new TodoItem("Assignment2", FORMAT.parse("12/06/2021"), "5 pm", "Sweden", "Not Done", "Group");
-        TodoItem item3 = new TodoItem("Mailing", FORMAT.parse("12/06/2022"), "9 pm", "Paris", "Done", "Individual");
-        TodoItem item4 = new TodoItem("Evaluation", FORMAT.parse("12/06/2019"), "2 pm", "London", "Done", "Group");
-        list.add(0, item1);
-        list.add(1, item2);
-        list.add(2, item3);
-        list.add(3, item4);
+            TodoItem item1 = new TodoItem("homework1", FORMAT.parse("12/06/2020"), "3 pm", "India", "Done", "Individual");
+            TodoItem item2 = new TodoItem("homework2", FORMAT.parse("16/03/2021"), "5 pm", "Sweden", "Not Done", "Group");
+            TodoItem item3 = new TodoItem("homework3", FORMAT.parse("10/09/2022"), "9 pm", "Paris", "Done", "Individual");
+            TodoItem item4 = new TodoItem("homework4", FORMAT.parse("01/12/2019"), "2 pm", "London", "Done", "Group");
+            list.add(item1);
+            list.add(item2);
+            list.add(item3);
+            list.add(item4);
+
+        ToDoList list1 = new ToDoList();
+        list1.add("Assignment1", "12/06/2020", "3 pm", "India", "Done", "Individual");
+        ToDoList list2 = new ToDoList();
+        list2.add("Assignment2", "12/06/2021", "5 pm", "Sweden", "Not Done", "Group");
+        ToDoList list3 = new ToDoList();
+        list3.add("Mailing", "12/06/2022", "9 pm", "Paris", "Done", "Individual");
+        ToDoList list4 = new ToDoList();
+        list4.add("Evaluation", "12/06/2019", "2 pm", "London", "Done", "Group");
     }
 
     @Test
-    public void testRemoveitem() throws ParseException, IOException {
-        list.remove(0);
-        assertEquals(3, list.size());
+    public void testAddItemToList() throws ParseException, IOException {
+
+        ToDoList lists= new ToDoList();
+        int existingsize = lists.size();
+
+        String expectedtitle = "Assignment5";
+        String Stringdate = "17/08/2020";
+        String expectedtime = "9 pm";
+        String expectedlocation = "Årsta";
+        String expectedstatus = "Ongoing";
+        String expectedcategory = "MDF";
+        lists.add(expectedtitle, Stringdate, expectedtime, expectedlocation, expectedstatus, expectedcategory);
+        System.out.println(lists.size());
+        assertEquals(existingsize + 1, lists.size());
+        lists.showList();
     }
 
     @Test
-    public void testRetrivingdatafromlist() {
-        assertEquals(4, list.size());
-        assertEquals("Assignment1", list.get(0).getTitle());
-        assertEquals("9 pm", list.get(2).getTime());
-        assertEquals("Sweden", list.get(1).getLocation());
-        assertEquals("Not Done", list.get(1).getStatus());
-        assertEquals("Group", list.get(3).getCategory());
-        assertNotNull("Test not null", list.get(2).getCategory());
+    public void testUpdateTitle() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        list1.add("Assignment1", "12/06/2020", "3 pm", "India", "Done", "Individual");
+        String rownumber = "1";
+        String itemnumber = "0";
+        String newtitle = "NewAssignment";
+        assertTrue(list1.updateTask(rownumber, itemnumber, newtitle));
+        assertEquals(newtitle,list1.getList().get(0).getTitle());
     }
 
     @Test
-    public void testaddnewitem() throws ParseException, IOException {
-        System.out.println(list.size());
-        int existingsize = list.size();
-        TodoItem item5 = new TodoItem("Testresults", FORMAT.parse("15/09/2019"), "15:09 pm", "Gothenberg", "Ongoing", "Group");
-        list.add(0, item5);
-        assertEquals(existingsize + 1, list.size());
-        System.out.println(list.size());
+    public void testUpdateDate() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        String rownumber = "1";
+        String itemnumber = "1";
+        String newdate = "01/01/2022";
+        assertTrue(list1.updateTask(rownumber, itemnumber,newdate));
+        assertEquals(FORMAT.parse(newdate),list1.getList().get(0).getDate());
     }
 
     @Test
-    public void test_indexOflistitem() {
-        // Checking index of an item
-        int pos = list.indexOf(list.get(2));
-        assertEquals(2, pos);
+    public void testUpdateTime() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        String rownumber = "1";
+        String itemnumber = "2";
+        String  newtime = "5 pm";
+        assertTrue(list1.updateTask(rownumber, itemnumber, newtime));
+        assertEquals(newtime,list1.getList().get(0).getTime());
     }
 
     @Test
-    public void test_islistEmpty() {
-        // Checking if array list is empty
-        assertFalse(list.isEmpty());
+    public void testUpdateLocation() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        String rownumber = "1";
+        String itemnumber = "3";
+        String  newlocation = "Stockholm";
+        list1.updateTask(rownumber, itemnumber, newlocation);
+        assertEquals(newlocation,list1.getList().get(0).getLocation());
     }
 
+    @Test
+    public void testUpdateStatus() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        String rownumber = "1";
+        String itemnumber = "4";
+        String  newStatus = "Done";
+        list1.updateTask(rownumber, itemnumber, newStatus);
+        assertEquals(newStatus,list1.getList().get(0).getStatus());
+    }
+
+    @Test
+    public void testUpdateProjectCategory() throws ParseException {
+        ToDoList list1 = new ToDoList();
+        String rownumber = "1";
+        String itemnumber = "5";
+        String  newCategory = "MDM";
+        list1.updateTask(rownumber, itemnumber, newCategory);
+        assertEquals(newCategory,list1.getList().get(0).getCategory());
+
+    }
+    @Test
+    public void testRemoveAllItemIfChoiceIsNo(){
+        ToDoList list = new ToDoList();
+        String choice = "No";
+        list.removeAllTasks(choice);
+        assertEquals(4,list.size());
+    }
+
+    @Test
+    public void testRemoveAllItemIfChoiceIsYes(){
+        ToDoList list = new ToDoList();
+        String choice = "Yes";
+        list.removeAllTasks(choice);
+        assertEquals(0,list.size());
+    }
+
+    @Test
+    public void testSortTasks(){
+        ToDoList list = new ToDoList();
+        String index = "1";
+        assertFalse(list.sortTasks(index));
+    }
+
+    @Test
+    public void testSearchTasks(){
+        ToDoList list1 = new ToDoList();
+        String projectname = "Individual";
+        assertEquals(projectname,list1.getList().get(0).getCategory());
+    }
+    @Test
+    public void testWriteData() throws IOException {
+        ToDoList list = new ToDoList();
+        File filepath = new File("TestWriteDataFile.txt");
+        assertTrue(list.writeData(filepath));
+    }
 }
 
 
